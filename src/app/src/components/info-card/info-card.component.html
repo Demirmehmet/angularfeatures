@@ -1,0 +1,28 @@
+<mat-slider [max]="6" [min]="3" [(ngModel)]="gridColumns" [thumbLabel]="true">
+</mat-slider>
+
+<div class="content">
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let question of questions">
+      <mat-card class="mat-elevation-z4">
+        <mat-card-header>
+          <mat-card-title>{{question.question}}</mat-card-title>
+        </mat-card-header>
+        <mat-radio-group
+          aria-labelledby="example-radio-group-label"
+          class="example-radio-group">
+          <mat-radio-button class="example-radio-button" *ngFor="let choice of question.choices" [value]="choice">
+            {{choice.choice}}
+          </mat-radio-button>
+        </mat-radio-group>
+        <mat-card-content>
+          Published at : {{question.published_at}}
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
